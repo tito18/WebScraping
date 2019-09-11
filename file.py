@@ -1,8 +1,11 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import html5lib
-import re
-import string
+import base64
+from PIL import Image
+import io
+
+
 try:
     html = urlopen("https://ofertadebienes.com//o_list.asp?g=1&op=0&p=0").read().decode()
     #print(html)
@@ -17,12 +20,15 @@ else:
   
     res = BeautifulSoup(html, "html5lib")
     
-    tags = res.findAll("div" , class_="resum")
-
-    for tag in tags:
+    itemTags = res.findAll("div" , class_="item")
+    
+    for tag in itemTags:
        
-       rawtxt = re.sub(r'^\s+', '', tag.getText())
-       print(rawtxt)
+       imagen = tag.find("img", class_="img-thumbnail")
+       description = tag.find("small")
+       price = tag.find("h4")
+       print(imagen)    #si quieres imprimir el precio por price.getText() dentro del print
+    
     
 
 
