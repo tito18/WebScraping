@@ -15,6 +15,6 @@ else:
         
     for tag in tags:
         print(tag.getText())
-    #print(res.href)
+    
 
 
