@@ -4,11 +4,10 @@ import html5lib
 import base64
 from PIL import Image
 import io
-import string
 import json
 
 try:
-    html = urlopen("https://ofertadebienes.com//o_list.asp?g=1&op=0&p=0").read().decode()
+    html = urlopen("https://ofertadebienes.com/o_list.asp").read().decode()
     #print(html)
 except HTTPError as e:
     print(e)
