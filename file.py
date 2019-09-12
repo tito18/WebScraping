@@ -2,7 +2,6 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import html5lib
 import base64
-from PIL import Image
 import io
 import string
 import json
