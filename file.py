@@ -20,13 +20,7 @@ else:
 
     data = {} 
     data['property'] = []
-    data['property'].append({
-        'description': ' ',
-        'image': ' ',
-        'price': ' ',
-        'link': ' '
-    })
-       
+           
     res = BeautifulSoup(html, "html5lib")
     
     itemTags = res.findAll("div" , class_="item")
