@@ -24,7 +24,8 @@ else:
     data['property'].append({
         'description': ' ',
         'image': ' ',
-        'price': ' '
+        'price': ' ',
+        'link': ' '
     })
        
     res = BeautifulSoup(html, "html5lib")
@@ -46,14 +47,23 @@ else:
        #Precio
        price = tag.find("h4")
 
+       #Link
+       linkRAW = tag.find("a", href_="")
+       linkString = str(linkRAW)
+       linkString1 = linkString.rsplit("href=")
+       linkString2 = linkString1[1].rsplit(">\n")
+       link = linkString2[0].split('"')
+
        #JSON
        data['property'].append({
            'description': description.getText(),
            'image': imagenURL[1],
-           'price': price.getText()
+           'price': price.getText(),
+           'link': link[1]
+
        })
            
-       #print(imagenURL[0])    #si quieres imprimir el precio por price.getText() dentro del print
+       #print(link)    #si quieres imprimir el precio por price.getText() dentro del print
 
 print(data['property'])
 with open('data.json', 'w') as json_file:
