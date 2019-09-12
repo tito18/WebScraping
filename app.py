@@ -42,21 +42,20 @@ else:
        #Link
        linkRAW = tag.find("a", href_="")
        linkString = str(linkRAW)
-       linkString1 = linkString.rsplit("href=")
-       linkString2 = linkString1[1].rsplit(">\n")
-       link = linkString2[0].split('"')
+       linkString1 = linkString.rsplit("id=")
+       linkString2 = linkString1[1].rsplit('">\n')
 
        #JSON
        data['property'].append({
+           'ID': linkString2[0],
            'description': description.getText(),
            'image': imagenURL[1],
-           'price': price.getText(),
-           'link': link[1]
+           'price': price.getText()
        })
-           
-       #print(link)    #si quieres imprimir el precio por price.getText() dentro del print
+       print("--------------------------------------")
+    #    print(linkString2[0])    #si quieres imprimir el precio por price.getText() dentro del print
 
-print(data['property'])
+# print(data['property'])
 with open('data.json', 'w') as json_file:
     json.dump(data, json_file)
     
