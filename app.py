@@ -10,7 +10,7 @@ import aiohttp
 
 client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://test:test@cyberia-wexns.mongodb.net/test?retryWrites=true&w=majority")
 db = client.webscraping_db
-collection = db.oferta
+collection = db.ofert
 
 
 # n_count = collection.find().count()
@@ -71,6 +71,7 @@ async def pushData():
     result = await collection.insert_many(
         [item for item in data['property']])
     print('inserted %d docs' % (len(result.inserted_ids),))
+    return result
     
 
 loop = asyncio.get_event_loop()
