@@ -55,7 +55,7 @@ else:
         print("--------------------------------------")
     #    print(linkString2[0])    #si quieres imprimir el precio por price.getText() dentro del print
 
-# print(data['property']) a
+# print(data['property']) aa
 with open('data.json', 'w') as json_file:
     json.dump(data, json_file)
 
