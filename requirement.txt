@@ -1,5 +1,7 @@
-  
 requests
 beautifulsoup4
 html5lib
 urllib5
+pymongo
+asyncio
+aiohttp
