@@ -88,6 +88,21 @@ else:
                 deta0 = rawString.rsplit('Detalles:</strong> ')
                 deta1 = deta0[1].rsplit('\n')
                 
+                #Otras Imagenes
+                iraw = taki.find("ol", class_="carousel-indicators mCustomScrollbar")
+                irawString = str(iraw)
+                imas0 = irawString.rsplit('src="')
+                i = 0
+                imas2 = []
+                for x in imas0:
+                    imas1 = x.rsplit('"/></li>')
+                    #print(imas1)
+                    if (i==0):
+                        print('impar')
+                    else:
+                        imas2.append(imas1[0])
+                    i=i+1
+                
                 #Financiamiento Maximo
                 #fm0 = rawString.rsplit('ximo: <strong>')
                 #fm1 = fm0[1].rsplit('</strong>')
@@ -96,7 +111,7 @@ else:
        data['property'].append({
            'ID_link':               linkID[0],
            'Description':           description.getText(),
-           'Image':                 imagenURL[1],
+           'Image':                 imas2,
            'Price':                 price.getText(),
            'Typo':                  tipo1[0],
            #'Financiamiento Maximo': fm1[0],
